@@ -1,38 +1,31 @@
-import React from 'react';
+import React, { useState } from "react";
 import * as s from "./app.styles";
-import {useGithubIssueComments} from "./api/github-events.api";
-import ErrorDetails from "./components/error-details";
+import IssueForm from "./components/issue-form";
+import IssueList from "./components/issue-list";
 
 function App() {
-    const { data, isLoading, isError, error } = useGithubIssueComments()
+    const [user, setUser] = useState("");
+    const [repo, setRepo] = useState("");
 
-    if(isLoading) {
-        return (
-            <div>Loading ...</div>
-        )
-    }
-
-    if(isError) {
-        return (
-            <ErrorDetails error={error}/>
-        )
-    }
+    const handleGoFetch = (userInput: string, repoInput: string) => {
+        setUser(userInput);
+        setRepo(repoInput);
+    };
 
     return (
         <s.container>
-            <s.header>Recent comments on TypeScript issues:</s.header>
-            {data?.map(issue => (
-                <div key={issue.id}>
-                    <s.issuer_title>{issue.title}</s.issuer_title>
-                    <pre>{issue.body}</pre>
-                    {issue.comments.map(comment =>
-                        <s.comment_body key={comment.id}>
-                            <div>{comment.created_at} {comment.user.login}:</div>
-                            <pre>{comment.body}</pre>
-                        </s.comment_body>
-                    )}
-                </div>
-            ))}
+            <s.header>Github Issues and Comments</s.header>
+
+            <IssueForm handleGoFetch={handleGoFetch} />
+
+            {user && repo ? (
+                <IssueList user={user} repo={repo} />
+            ) : (
+                <>
+                    <h2>No Input found</h2>
+                    <p>Enter repo and user; then `Go Fetch`!</p>
+                </>
+            )}
         </s.container>
     );
 }
