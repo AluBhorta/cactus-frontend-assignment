@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/cactus-frontend-assignment/static/css/main.5779ac26.chunk.css",
+    "main.js": "/cactus-frontend-assignment/static/js/main.a31cf070.chunk.js",
+    "main.js.map": "/cactus-frontend-assignment/static/js/main.a31cf070.chunk.js.map",
+    "runtime-main.js": "/cactus-frontend-assignment/static/js/runtime-main.8f1dd839.js",
+    "runtime-main.js.map": "/cactus-frontend-assignment/static/js/runtime-main.8f1dd839.js.map",
+    "static/js/2.7dac0886.chunk.js": "/cactus-frontend-assignment/static/js/2.7dac0886.chunk.js",
+    "static/js/2.7dac0886.chunk.js.map": "/cactus-frontend-assignment/static/js/2.7dac0886.chunk.js.map",
+    "index.html": "/cactus-frontend-assignment/index.html",
+    "precache-manifest.5d4861085aa2b450fef04476c00e3b56.js": "/cactus-frontend-assignment/precache-manifest.5d4861085aa2b450fef04476c00e3b56.js",
+    "service-worker.js": "/cactus-frontend-assignment/service-worker.js",
+    "static/css/main.5779ac26.chunk.css.map": "/cactus-frontend-assignment/static/css/main.5779ac26.chunk.css.map",
+    "static/js/2.7dac0886.chunk.js.LICENSE.txt": "/cactus-frontend-assignment/static/js/2.7dac0886.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.8f1dd839.js",
+    "static/js/2.7dac0886.chunk.js",
+    "static/css/main.5779ac26.chunk.css",
+    "static/js/main.a31cf070.chunk.js"
+  ]
+}
