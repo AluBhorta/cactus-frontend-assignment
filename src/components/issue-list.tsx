@@ -3,7 +3,6 @@ import ReactMarkdown from "react-markdown";
 
 import { useGithubIssueComments } from "../api/github-events.api";
 import ErrorDetails from "./error-details";
-import * as s from "../app.styles";
 
 interface IssueListProps {
     user: string;

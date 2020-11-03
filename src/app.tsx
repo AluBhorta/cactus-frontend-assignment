@@ -4,6 +4,8 @@ import { Container } from "@material-ui/core";
 import IssueForm from "./components/issue-form";
 import IssueList from "./components/issue-list";
 
+import "./styles/index.css";
+
 function App() {
     const [user, setUser] = useState("");
     const [repo, setRepo] = useState("");
@@ -15,7 +17,7 @@ function App() {
 
     return (
         <>
-            <Container maxWidth="md" >
+            <Container maxWidth="md">
                 <h1>Github Issues and Comments</h1>
 
                 <IssueForm handleGoFetch={handleGoFetch} />
