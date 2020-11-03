@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import * as s from "./app.styles";
+import { Container } from "@material-ui/core";
+
 import IssueForm from "./components/issue-form";
 import IssueList from "./components/issue-list";
 
@@ -13,20 +14,22 @@ function App() {
     };
 
     return (
-        <s.container>
-            <s.header>Github Issues and Comments</s.header>
+        <>
+            <Container maxWidth="md" >
+                <h1>Github Issues and Comments</h1>
 
-            <IssueForm handleGoFetch={handleGoFetch} />
+                <IssueForm handleGoFetch={handleGoFetch} />
 
-            {user && repo ? (
-                <IssueList user={user} repo={repo} />
-            ) : (
-                <>
-                    <h2>No Input found</h2>
-                    <p>Enter repo and user; then `Go Fetch`!</p>
-                </>
-            )}
-        </s.container>
+                {user && repo ? (
+                    <IssueList user={user} repo={repo} />
+                ) : (
+                    <>
+                        <h2>No Input found</h2>
+                        <p>Enter repo and user; then `Go Fetch`!</p>
+                    </>
+                )}
+            </Container>
+        </>
     );
 }
 

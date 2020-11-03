@@ -23,7 +23,7 @@ const IssueForm: React.FC<IssueFormProps> = ({ handleGoFetch }) => {
 
     return (
         <>
-            <h1>IssueForm</h1>
+            <h1>Issue Form</h1>
 
             <form onSubmit={(e) => handleSubmit(e)}>
                 <input

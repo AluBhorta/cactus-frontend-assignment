@@ -1,4 +1,5 @@
 import React from "react";
+import ReactMarkdown from "react-markdown";
 
 import { useGithubIssueComments } from "../api/github-events.api";
 import ErrorDetails from "./error-details";
@@ -14,7 +15,7 @@ const IssueList: React.FC<IssueListProps> = ({ user, repo }) => {
         user,
         repo
     );
-    
+
     if (isLoading) {
         return <div>Loading ...</div>;
     }
@@ -25,21 +26,42 @@ const IssueList: React.FC<IssueListProps> = ({ user, repo }) => {
 
     return (
         <>
-            <h1>IssueList</h1>
+            <h1>Issue List</h1>
 
-            {data?.map((issue) => (
-                <div key={issue.id}>
-                    <s.issuer_title>{issue.title}</s.issuer_title>
-                    <pre>{issue.body}</pre>
-                    {issue.comments.map((comment) => (
-                        <s.comment_body key={comment.id}>
-                            <div>
-                                {comment.created_at} {comment.user.login}:
+            {data?.map((issue, i) => (
+                <>
+                    <div key={i}>
+                        <h2>
+                            <ReactMarkdown allowDangerousHtml>
+                                {issue.title}
+                            </ReactMarkdown>
+                        </h2>
+                        <ReactMarkdown allowDangerousHtml>
+                            {issue.body}
+                        </ReactMarkdown>
+
+                        {issue.comments.map((comment, j) => (
+                            <div key={j}>
+                                <div>
+                                    <pre>
+                                        <div>
+                                            {comment.created_at}{" "}
+                                            {comment.user.login}:
+                                        </div>
+                                    </pre>
+                                    <pre>
+                                        <ReactMarkdown allowDangerousHtml>
+                                            {comment.body}
+                                        </ReactMarkdown>
+                                    </pre>
+                                </div>
+                                <br/>
                             </div>
-                            <pre>{comment.body}</pre>
-                        </s.comment_body>
-                    ))}
-                </div>
+                        ))}
+
+                        <hr />
+                    </div>
+                </>
             ))}
         </>
     );
