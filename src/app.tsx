@@ -8,8 +8,8 @@ import "./styles/index.css";
 import NoResults from "./components/no-results";
 
 function App() {
-    const [user, setUser] = useState("");
-    const [repo, setRepo] = useState("");
+    const [user, setUser] = useState("microsoft");
+    const [repo, setRepo] = useState("typescript");
 
     const handleGoFetch = (userInput: string, repoInput: string) => {
         setUser(userInput);
@@ -20,9 +20,11 @@ function App() {
         <>
             <Box marginTop="5vh">
                 <Container maxWidth="md">
-                    <Typography variant="h1" color="secondary">
-                        Github Issues and Comments
-                    </Typography>
+                    <div className="text-center mb">
+                        <Typography variant="h1" color="secondary">
+                            Github Issues and Comments
+                        </Typography>
+                    </div>
 
                     <IssueForm handleGoFetch={handleGoFetch} />
 

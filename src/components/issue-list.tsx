@@ -1,8 +1,14 @@
+import {
+    Card,
+    CardContent,
+    CircularProgress,
+    Typography,
+} from "@material-ui/core";
 import React from "react";
-import ReactMarkdown from "react-markdown";
 
 import { useGithubIssueComments } from "../api/github-events.api";
 import ErrorDetails from "./error-details";
+import IssueItem from "./issue-item";
 
 interface IssueListProps {
     user: string;
@@ -16,7 +22,11 @@ const IssueList: React.FC<IssueListProps> = ({ user, repo }) => {
     );
 
     if (isLoading) {
-        return <div>Loading ...</div>;
+        return (
+            <div className="text-center mt">
+                <CircularProgress />
+            </div>
+        );
     }
 
     if (isError) {
@@ -25,43 +35,17 @@ const IssueList: React.FC<IssueListProps> = ({ user, repo }) => {
 
     return (
         <>
-            <h1>Issue List</h1>
-
-            {data?.map((issue, i) => (
-                <>
-                    <div key={i}>
-                        <h2>
-                            <ReactMarkdown allowDangerousHtml>
-                                {issue.title}
-                            </ReactMarkdown>
-                        </h2>
-                        <ReactMarkdown allowDangerousHtml>
-                            {issue.body}
-                        </ReactMarkdown>
-
-                        {issue.comments.map((comment, j) => (
-                            <div key={j}>
-                                <div>
-                                    <pre>
-                                        <div>
-                                            {comment.created_at}{" "}
-                                            {comment.user.login}:
-                                        </div>
-                                    </pre>
-                                    <pre>
-                                        <ReactMarkdown allowDangerousHtml>
-                                            {comment.body}
-                                        </ReactMarkdown>
-                                    </pre>
-                                </div>
-                                <br/>
-                            </div>
-                        ))}
-
-                        <hr />
+            <br />
+            <Card>
+                <CardContent>
+                    <div className="text-center mb">
+                        <Typography variant="h1">Issues</Typography>
                     </div>
-                </>
-            ))}
+                    {data?.map((issue, i) => (
+                        <IssueItem issue={issue} key={i} />
+                    ))}
+                </CardContent>
+            </Card>
         </>
     );
 };
