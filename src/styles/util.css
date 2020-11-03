@@ -3,5 +3,9 @@
 }
 
 .mr {
-    margin-right: 1rem;    
+    margin-right: 1rem;
+}
+
+.text-center {
+    text-align: center;
 }

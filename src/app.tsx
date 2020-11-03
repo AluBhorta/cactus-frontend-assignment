@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { Container } from "@material-ui/core";
+import { Box, Container, Typography } from "@material-ui/core";
 
 import IssueForm from "./components/issue-form";
 import IssueList from "./components/issue-list";
 
 import "./styles/index.css";
+import NoResults from "./components/no-results";
 
 function App() {
     const [user, setUser] = useState("");
@@ -17,20 +18,21 @@ function App() {
 
     return (
         <>
-            <Container maxWidth="md">
-                <h1>Github Issues and Comments</h1>
+            <Box marginTop="5vh">
+                <Container maxWidth="md">
+                    <Typography variant="h1" color="secondary">
+                        Github Issues and Comments
+                    </Typography>
 
-                <IssueForm handleGoFetch={handleGoFetch} />
+                    <IssueForm handleGoFetch={handleGoFetch} />
 
-                {user && repo ? (
-                    <IssueList user={user} repo={repo} />
-                ) : (
-                    <>
-                        <h2>No Input found</h2>
-                        <p>Enter repo and user; then `Go Fetch`!</p>
-                    </>
-                )}
-            </Container>
+                    {user && repo ? (
+                        <IssueList user={user} repo={repo} />
+                    ) : (
+                        <NoResults />
+                    )}
+                </Container>
+            </Box>
         </>
     );
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Grid, TextField } from "@material-ui/core";
+import { Button, Card, CardContent, Grid, TextField } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
@@ -35,50 +35,62 @@ const IssueForm: React.FC<IssueFormProps> = ({ handleGoFetch }) => {
 
     return (
         <>
-            <form>
-                <Grid container alignItems="center" justify="center">
-                    <Grid item>
-                        <TextField
-                            label="User"
-                            variant="outlined"
-                            value={userInput}
-                            onChange={(e) => setUserInput(e.target.value)}
-                            placeholder="Enter Github user..."
-                            size="small"
-                            required
-                            aria-required
-                        />
-                    </Grid>
-
-                    <Grid item>
-                        <span className={classes.slash + " ml mr"}>/</span>
-                    </Grid>
-
-                    <Grid item>
-                        <TextField
-                            label="Repo"
-                            variant="outlined"
-                            placeholder="Enter Github repo..."
-                            value={repoInput}
-                            onChange={(e) => setRepoInput(e.target.value)}
-                            size="small"
-                            required
-                            aria-required
-                        />
-                    </Grid>
-                    <Grid item>
-                        <span className="ml"></span>
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            onClick={(e) => handleSubmit(e)}
-                            size="large"
+            <Card>
+                <CardContent>
+                    <form>
+                        <Grid
+                            container
+                            alignItems="center"
+                            justify="center"
+                            spacing={3}
                         >
-                            Go Fetch
-                        </Button>
-                    </Grid>
-                </Grid>
-            </form>
+                            <Grid item>
+                                <TextField
+                                    label="User"
+                                    variant="outlined"
+                                    value={userInput}
+                                    onChange={(e) =>
+                                        setUserInput(e.target.value)
+                                    }
+                                    placeholder="Enter Github user..."
+                                    size="small"
+                                    required
+                                    aria-required
+                                />
+                            </Grid>
+
+                            <Grid item>
+                                <span className={classes.slash}>/</span>
+                            </Grid>
+
+                            <Grid item>
+                                <TextField
+                                    label="Repo"
+                                    variant="outlined"
+                                    placeholder="Enter Github repo..."
+                                    value={repoInput}
+                                    onChange={(e) =>
+                                        setRepoInput(e.target.value)
+                                    }
+                                    size="small"
+                                    required
+                                    aria-required
+                                />
+                            </Grid>
+                            <Grid item>
+                                <Button
+                                    variant="contained"
+                                    color="primary"
+                                    onClick={(e) => handleSubmit(e)}
+                                    size="large"
+                                >
+                                    Go Fetch
+                                </Button>
+                            </Grid>
+                        </Grid>
+                    </form>
+                </CardContent>
+            </Card>
         </>
     );
 };
