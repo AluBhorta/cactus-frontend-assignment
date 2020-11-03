@@ -22,14 +22,14 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
                     }}
                 >
                     <div>
-                        <Typography>
+                        <Typography component={"span"}>
                             <div>
                                 By <strong>{comment.user.login}</strong> |{" "}
                                 {toMomentAgo(comment.created_at)}
                             </div>
                         </Typography>
 
-                        <Typography noWrap={false}>
+                        <Typography component={"span"} noWrap={false}>
                             <ReactMarkdown allowDangerousHtml>
                                 {comment.body}
                             </ReactMarkdown>

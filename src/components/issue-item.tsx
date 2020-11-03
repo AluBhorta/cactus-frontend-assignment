@@ -29,7 +29,11 @@ const IssueItem: React.FC<IssueItemProps> = ({ issue }) => {
                 >
                     <Grid container>
                         <Grid item xs={12}>
-                            <Typography variant="h2" color="secondary">
+                            <Typography
+                                component={"span"}
+                                variant="h2"
+                                color="secondary"
+                            >
                                 <ReactMarkdown allowDangerousHtml>
                                     {issue.title}
                                 </ReactMarkdown>
@@ -37,7 +41,7 @@ const IssueItem: React.FC<IssueItemProps> = ({ issue }) => {
                         </Grid>
 
                         <Grid item>
-                            <Typography>
+                            <Typography component={"span"}>
                                 By <strong>{issue.user.login}</strong> |{" "}
                                 {toMomentAgo(issue.created_at)}
                             </Typography>
@@ -46,9 +50,13 @@ const IssueItem: React.FC<IssueItemProps> = ({ issue }) => {
                 </AccordionSummary>
 
                 <AccordionDetails>
-                    <Grid container spacing={2} >
+                    <Grid container spacing={2}>
                         <Grid item xs={12}>
-                            <Typography className="issue-body" noWrap={false}>
+                            <Typography
+                                component={"span"}
+                                className="issue-body"
+                                noWrap={false}
+                            >
                                 <ReactMarkdown allowDangerousHtml>
                                     {issue.body}
                                 </ReactMarkdown>

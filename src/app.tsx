@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Box, Container, Typography } from "@material-ui/core";
+import { AppBar, Box, Container, Typography } from "@material-ui/core";
 
 import IssueForm from "./components/issue-form";
 import IssueList from "./components/issue-list";
 import NoResults from "./components/no-results";
-
+import Footer from "./components/footer";
 
 function App() {
     const [user, setUser] = useState("");
@@ -21,7 +21,7 @@ function App() {
                 <Container maxWidth="md">
                     <div className="text-center mb">
                         <Typography variant="h1" color="secondary">
-                            Search Github Issues
+                            Search Github Issues {" 🔍"}
                         </Typography>
                     </div>
 
@@ -33,6 +33,8 @@ function App() {
                         <NoResults />
                     )}
                 </Container>
+
+                <Footer />
             </Box>
         </>
     );
