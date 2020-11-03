@@ -1,7 +1,9 @@
-import { Divider, ListItem, Typography, Box } from "@material-ui/core";
+import { ListItem, Typography, Box } from "@material-ui/core";
 import React from "react";
 import ReactMarkdown from "react-markdown";
+
 import { GithubComment } from "../api/github-events.model";
+import { toMomentAgo } from "../util";
 
 interface CommentItemProps {
     comment: GithubComment;
@@ -10,15 +12,23 @@ interface CommentItemProps {
 const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
     return (
         <>
-            <ListItem>
-                <Box>
+            <ListItem alignItems="center" style={{ width: "80%" }}>
+                <Box
+                    p={2}
+                    style={{
+                        backgroundColor: "#ecf1f0",
+                        borderRadius: "4px",
+                        width: "100%",
+                    }}
+                >
                     <div>
                         <Typography>
                             <div>
                                 By <strong>{comment.user.login}</strong> |{" "}
-                                {comment.created_at}
+                                {toMomentAgo(comment.created_at)}
                             </div>
                         </Typography>
+
                         <Typography noWrap={false}>
                             <ReactMarkdown allowDangerousHtml>
                                 {comment.body}
@@ -27,7 +37,6 @@ const CommentItem: React.FC<CommentItemProps> = ({ comment }) => {
                     </div>
                 </Box>
             </ListItem>
-            <Divider />
         </>
     );
 };

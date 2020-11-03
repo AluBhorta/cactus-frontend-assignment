@@ -3,13 +3,12 @@ import { Box, Container, Typography } from "@material-ui/core";
 
 import IssueForm from "./components/issue-form";
 import IssueList from "./components/issue-list";
-
-import "./styles/index.css";
 import NoResults from "./components/no-results";
 
+
 function App() {
-    const [user, setUser] = useState("microsoft");
-    const [repo, setRepo] = useState("typescript");
+    const [user, setUser] = useState("");
+    const [repo, setRepo] = useState("");
 
     const handleGoFetch = (userInput: string, repoInput: string) => {
         setUser(userInput);
@@ -22,7 +21,7 @@ function App() {
                 <Container maxWidth="md">
                     <div className="text-center mb">
                         <Typography variant="h1" color="secondary">
-                            Github Issues and Comments
+                            Search Github Issues
                         </Typography>
                     </div>
 

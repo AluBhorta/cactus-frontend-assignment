@@ -7,16 +7,16 @@ const NoResults: React.FC = () => {
             <Box margin="1rem">
                 <Grid container justify="center">
                     <Grid item>
-                        <div className="text-center">
+                        <div className="text-center mb">
                             <Typography variant="h2" color="secondary">
-                                No Results found...
+                                No Issues found...
                             </Typography>
                         </div>
                         <div className="text-center">
                             <Typography>
-                                Enter <strong>User</strong> and{" "}
-                                <strong>Repo</strong>; then{" "}
-                                <strong>Go Fetch</strong>!
+                                Enter <strong>user</strong> and{" "}
+                                <strong>repo</strong>; then{" "}
+                                <strong>GO FETCH</strong>!
                             </Typography>
                         </div>
                     </Grid>

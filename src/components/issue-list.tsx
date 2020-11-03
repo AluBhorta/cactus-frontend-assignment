@@ -41,9 +41,11 @@ const IssueList: React.FC<IssueListProps> = ({ user, repo }) => {
                     <div className="text-center mb">
                         <Typography variant="h1">Issues</Typography>
                     </div>
-                    {data?.map((issue, i) => (
-                        <IssueItem issue={issue} key={i} />
-                    ))}
+                    <div>
+                        {data?.map((issue, i) => (
+                            <IssueItem issue={issue} key={i} />
+                        ))}
+                    </div>
                 </CardContent>
             </Card>
         </>

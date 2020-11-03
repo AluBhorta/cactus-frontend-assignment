@@ -25,6 +25,8 @@ const IssueForm: React.FC<IssueFormProps> = ({ handleGoFetch }) => {
         if (userInput && repoInput) {
             handleGoFetch(userInput, repoInput);
             clearFields();
+        } else {
+            alert("Please enter 'user' and 'repo'...")
         }
     };
 
@@ -46,7 +48,7 @@ const IssueForm: React.FC<IssueFormProps> = ({ handleGoFetch }) => {
                         >
                             <Grid item>
                                 <TextField
-                                    label="User"
+                                    label="user"
                                     variant="outlined"
                                     value={userInput}
                                     onChange={(e) =>
@@ -65,7 +67,7 @@ const IssueForm: React.FC<IssueFormProps> = ({ handleGoFetch }) => {
 
                             <Grid item>
                                 <TextField
-                                    label="Repo"
+                                    label="repo"
                                     variant="outlined"
                                     placeholder="Enter Github repo..."
                                     value={repoInput}
@@ -82,7 +84,7 @@ const IssueForm: React.FC<IssueFormProps> = ({ handleGoFetch }) => {
                                     variant="contained"
                                     color="primary"
                                     onClick={(e) => handleSubmit(e)}
-                                    size="large"
+                                    size="medium"
                                 >
                                     Go Fetch
                                 </Button>

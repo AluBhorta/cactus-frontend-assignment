@@ -13,6 +13,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { GithubIssue } from "../api/github-events.model";
 import CommentItem from "./comment-item";
+import { toMomentAgo } from "../util";
 
 interface IssueItemProps {
     issue: GithubIssue;
@@ -24,7 +25,7 @@ const IssueItem: React.FC<IssueItemProps> = ({ issue }) => {
             <Accordion TransitionProps={{ unmountOnExit: true }}>
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
-                    aria-controls="panel1a-content"
+                    style={{ backgroundColor: "#e0f2f1" }}
                 >
                     <Grid container>
                         <Grid item xs={12}>
@@ -38,34 +39,32 @@ const IssueItem: React.FC<IssueItemProps> = ({ issue }) => {
                         <Grid item>
                             <Typography>
                                 By <strong>{issue.user.login}</strong> |{" "}
-                                {issue.created_at}
+                                {toMomentAgo(issue.created_at)}
                             </Typography>
                         </Grid>
                     </Grid>
                 </AccordionSummary>
 
                 <AccordionDetails>
-                    <List>
-                        <ListItem>
-                            <Typography noWrap={false}>
+                    <Grid container spacing={2} >
+                        <Grid item xs={12}>
+                            <Typography className="issue-body" noWrap={false}>
                                 <ReactMarkdown allowDangerousHtml>
                                     {issue.body}
                                 </ReactMarkdown>
                             </Typography>
-                        </ListItem>
-
-                        <ListItem>
+                        </Grid>
+                        <Grid item xs={12}>
                             <Typography variant="h3">Comments</Typography>
-                        </ListItem>
-
-                        <ListItem>
+                        </Grid>
+                        <Grid item xs={12}>
                             <List>
                                 {issue.comments.map((comment, j) => (
                                     <CommentItem comment={comment} key={j} />
                                 ))}
                             </List>
-                        </ListItem>
-                    </List>
+                        </Grid>
+                    </Grid>
                 </AccordionDetails>
             </Accordion>
 
